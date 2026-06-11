@@ -1,0 +1,14 @@
+unmanaged implementation in class zbp_c_gateitemapi unique;
+strict ( 1 );
+
+define behavior for ZC_GATEITEMAPI //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) Gatepassno, gateitemapi;
+}

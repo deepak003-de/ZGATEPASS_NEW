@@ -1,0 +1,47 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ConfirmUserMatrix', 
+    typeNamePlural: 'ConfirmUserMatrixs', 
+    title: {
+      type: #STANDARD, 
+      label: 'Confirm User Matrix', 
+      value: 'Suser'
+    }
+  }
+}
+annotate view ZI_ConfirmUserMatrix with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_ConfirmUserMatrix', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Confirm User Matrix', 
+    position: 1 
+  } ]
+  Suser;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Sloc;
+  
+  @UI.identification: [ {
+    position: 3 , 
+    label: 'Mail'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'Mail'
+  } ]
+  Mail;
+}

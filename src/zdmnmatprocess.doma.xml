@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000030</LENG>
+    <OUTPUTLEN>000030</OUTPUTLEN>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>Domain For Mat Process</DDTEXT>
+    <DOMMASTER>E</DOMMASTER>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>RAW</DOMVALUE_L>
+     <DDTEXT>Raw Material</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>STORES</DOMVALUE_L>
+     <DDTEXT>Stores - Outbound</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>OUT</DOMVALUE_L>
+     <DDTEXT>Sales Outward</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>S&amp;C</DOMVALUE_L>
+     <DDTEXT>Spares &amp; Consumables - Inbound</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>MISC</DOMVALUE_L>
+     <DDTEXT>Miscellaneous</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0006</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SRET</DOMVALUE_L>
+     <DDTEXT>Sales Return</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0007</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>RGP</DOMVALUE_L>
+     <DDTEXT>Returnable Gatepass</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZDMNMATPROCESS</DOMNAME>
+     <VALPOS>0008</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>STO</DOMVALUE_L>
+     <DDTEXT>Stock Transfer Order</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_ConfirmUserMatrix_S'
+define service ZUI_CONFIRMUSERMATRIX {
+  expose ZI_CONFIRMUSERMATRIX_S as ConfirmUserMatriAll;
+  expose ZI_CONFIRMUSERMATRIX as ConfirmUserMatrix;
+}

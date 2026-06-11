@@ -1,0 +1,100 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: { title: { type: #STANDARD, label: 'Item', value: 'item' } } }
+
+annotate entity ZC_PO_DETAILS with
+{
+
+  @UI.facet:
+  [
+
+  {
+  id: 'Generalitem',
+  isSummary: true,
+  label: 'Gatepass Item',
+  type: #COLLECTION,
+  purpose: #STANDARD
+  },
+
+  { type: #FIELDGROUP_REFERENCE,
+  targetQualifier: 'GeneralData1',
+  parentId: 'Generalitem',
+  position: 1,
+  label: 'Section 1',
+  id: 'GeneralData1' } ]
+
+  @UI.hidden: true
+  Id;
+  @UI.hidden: true
+  item;
+  @UI: { hidden: #(Showso),
+         lineItem: [{ position: 10 }],
+        identification: [{ position: 10 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 10, importance: #HIGH }]  }
+  @Consumption.valueHelpDefinition : [ {
+   entity : { name: 'ZI_PURCHASEF4' , element: 'PurchaseOrder' },
+  distinctValues: true,
+  useForValidation: true,
+  additionalBinding: [{ element: 'Supplier', localElement: 'Supplier', usage: #FILTER_AND_RESULT }] }]
+//                      { element: 'SupplierFullName', localElement: 'Supliername', usage: #FILTER_AND_RESULT }]  } ]
+  Purchaseorder;
+  @UI: {
+         lineItem: [{ position: 12 }],
+        identification: [{ position: 12 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 12, importance: #HIGH }]  }
+  Supplier;
+  @UI: {
+         lineItem: [{ position: 13 }],
+        identification: [{ position: 13 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 13, importance: #HIGH }]  }
+  Supliername;
+  @UI.hidden: #(Showpo)
+  @UI: {
+        lineItem: [{ position: 11 }],
+       identification: [{ position: 11 }],
+       fieldGroup: [{ qualifier: 'GeneralData1', position: 11, importance: #HIGH }]  }
+  @Consumption.valueHelpDefinition : [ {
+   entity : { name: 'ZI_SALESORDERF4' , element: 'SalesDocument' },
+  distinctValues: true,
+  useForValidation: true  } ]
+  Salesorder;
+  //  @UI: { hidden: #(Showso),
+  //        lineItem: [{ position: 14 }],
+  //       identification: [{ position: 14 }],
+  //       fieldGroup: [{ qualifier: 'GeneralData1', position: 14, importance: #HIGH }]  }
+  @UI.hidden: true // ++ 22.05.25
+  eway;
+  
+  @UI: { hidden: #(Showso),
+         lineItem: [{ position: 15 }],
+        identification: [{ position: 15 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 15, importance: #HIGH }]  }
+
+  invoiceno;
+  @UI: { hidden: #(Showso),
+         lineItem: [{ position: 16 }],
+        identification: [{ position: 16 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 16, importance: #HIGH }]  }
+  invoicedate;
+   @UI: {  // ++ 04.07.25
+         lineItem: [{ position: 17 }],
+        identification: [{ position: 17 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 17, importance: #HIGH }]  }
+  supplyplant;  
+//  @UI.hidden: #(Showpo) // ++ 10.07.25
+   @UI: {  // ++ 09.07.25
+         lineItem: [{ position: 18 }],
+        identification: [{ position: 18 }],
+        fieldGroup: [{ qualifier: 'GeneralData1', position: 18, importance: #HIGH }]  }
+        //++ 10.07.25 
+         @Consumption.valueHelpDefinition : [ {
+   entity : { name: 'ZC_F4_POSO_DETAILS' , element: 'BillingDocument' },
+  distinctValues: true,
+  useForValidation: true  } ]
+  billingreference;
+  
+  
+
+  /* Associations */
+
+}

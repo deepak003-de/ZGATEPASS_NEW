@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "tranporter details",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Transporter"
+  },
+  "ui5AppDetails": {
+    "appId": "ztranport"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_866915F16067601C0C5CD2C3A799F26CC60EC178_TM",
+    "semanticObject": "ZTRANS",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_866915F16067601C0C5CD2C3A799F26CC60EC178_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Transporter"
+      }
+    }
+  ]
+}

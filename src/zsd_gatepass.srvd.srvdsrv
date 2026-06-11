@@ -1,0 +1,10 @@
+@EndUserText.label: 'Service Definition For Gatepass'
+define service ZSD_GATEPASS {
+  expose ZC_GATEHEAD;
+  expose ZC_PO_DETAILS;
+  expose ZC_GATEITEM;
+  expose ZI_PURCHASEF4;
+  expose ZVCUSTF4;
+  expose ZVCHLNF4;
+  expose ZI_MOVEMENTTYPE;
+}

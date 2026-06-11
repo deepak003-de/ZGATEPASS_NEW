@@ -1,0 +1,55 @@
+projection;
+strict ( 1 );
+use draft;
+use side effects;
+
+define behavior for ZC_GATEHEAD //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action PRINT;
+  use action SETOUT;
+  use action GENGATE;
+  use action BGR;
+  use action CANCEL;
+  use action GENITEM;
+  use action DEL;
+  use action PGI;
+  use action UPD;
+  use action INV;
+  use action GETINV;
+  use action Edit;
+  use action Activate;
+  use action Resume;
+  use action Discard;
+  use action Prepare;
+
+  use association _Item1 { create; with draft; }
+  use association _Item { create; with draft; }
+}
+
+define behavior for ZC_GATEITEM alias item1
+{
+  use update;
+  use delete;
+ // use create;
+  use action CONFIRM ;
+  use action CONFIRMS ;
+//  use action GR;
+//  use action GROSS ;
+//  use action NET ;
+
+  use association _Head{ with draft; }
+}
+
+define behavior for ZC_PO_DETAILS //alias <alias_name>
+{
+  use update;
+  use delete;
+
+
+
+  use association _Head { with draft; }
+}

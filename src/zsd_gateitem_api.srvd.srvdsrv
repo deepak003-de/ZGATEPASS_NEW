@@ -1,0 +1,4 @@
+@EndUserText.label: 'Gate Item Api'
+define service ZSD_GATEITEM_API {
+  expose ZC_GATEITEMAPI;
+}

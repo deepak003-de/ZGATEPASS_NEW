@@ -1,0 +1,4 @@
+@EndUserText.label: 'Transporter Details'
+define service ZSB_TRANSPORTER {
+  expose ZC_TRANSPORTER;
+}

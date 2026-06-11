@@ -1,0 +1,187 @@
+managed implementation in class zbp_i_gatehead unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZI_GATEHEAD //alias <alias_name>
+persistent table zdt_gatehead
+draft table zdr_gatehead
+lock master
+total etag Createdon
+authorization master ( instance )
+etag master Createdon
+with additional save
+{
+  create;
+  update;
+  delete ( features : instance );
+  field ( readonly, numbering : managed ) Id;
+  field ( features : instance ) Criticality, Invoicedate, Invoiceno, Lrrrdate, Lrrrno, transportergst, invoicevalue,
+  Supplierdesc, Supplierno, customerno, customerdesc, Transportername, Trasporterno,
+  Vehicleno, Waybillno, packingwt, remarks, challanno, challandate, challanunit, challanvalue, challanwt,
+  drivername,tpno, source, destination ,Entrytime,Exittime,  Exitdate, Entrydate;
+  field ( readonly ) gatepassno, Status, grstatus, Createdat, Createdon, taxinvoice,    deliverydocument,
+                     Attachment, wuom,weighbentrydate,weighbentrytime,weighbexitdate,weighbexittime,
+                     grossqty,tareqty,qtyactual,grstatno,pendqty;
+  field ( mandatory : create, readonly : update ) Movementtype, Materialprocess, Companycode;
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) PRINT result [1] $self;
+  action ( features : instance ) SETOUT result [1] $self;
+  action ( features : instance ) GENGATE result [1] $self;
+  action ( features : instance ) BGR result [1] $self;
+  action ( features : instance ) CANCEL result [1] $self;
+  action ( features : instance ) GENITEM result [1] $self;
+  action ( features : instance ) DEL result [1] $self;
+  action ( features : instance ) PGI result [1] $self;
+  action ( features : instance ) UPD result [1] $self;
+  action ( features : instance ) INV result [1] $self;
+  action ( features : instance ) GETINV result [1] $self;
+
+   side effects
+  { action PRINT affects messages;
+    action SETOUT affects  messages;
+    action GENGATE affects messages;
+    action BGR affects  messages;
+    action CANCEL affects  messages;
+    action GENITEM affects messages;
+    action DEL affects  messages;
+    action PGI affects  messages;
+    action UPD affects messages;
+     action INV affects  messages;
+    action GETINV affects messages;
+  }
+
+  determination headerdetails1 on modify { field Movementtype; field Materialprocess; }
+  determination headerdetails on save { create; }
+  determination itemmodify on save { create; update; }
+  validation headdet on save { create; }
+  validation vehiclecheck on save { create; update; }
+
+
+  association _Item1 { create ( features : instance ); with draft; }
+  association _Item { create ( features : instance ); with draft; }
+
+  mapping for zi_gatehead
+    {
+      gatepassno      = gatepassno;
+      movementtype    = movementtype;
+      materialprocess = materialprocess;
+      Companycode = Companycode;
+      entrydate       = entrydate;
+      entrytime       = entrytime;
+      exitdate        = exitdate;
+      exittime        = exittime;
+      supplierno      = supplierno;
+      supplierdesc    = supplierdesc;
+      vehicleno       = vehicleno;
+      trasporterno    = trasporterno;
+      transportername = transportername;
+      lrrrno          = lrrrno;
+      lrrrdate        = lrrrdate;
+      invoicedate     = invoicedate;
+      waybillno       = waybillno;
+      Criticality     = Criticality;
+      invoiceno       = invoiceno;
+      tsetout         = tsetout;
+      tprint          = tprint;
+      tgate           = tgate;
+      status          = status;
+      createdon       = createdon;
+      createdat       = createdat;
+      challanwt       = challanwt;
+      bgr             = bgr;
+      createdby = createdby;
+      createdbyname = createdbyname;
+      drivername    = drivername;
+      pendqty = pendqty;
+    }
+}
+
+define behavior for ZI_GATEITEM alias item1
+persistent table zdt_gate_item
+draft table zdr_gate_item
+//lock master
+//total etag Createdon
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+
+  update;
+ // create;
+  delete ( features : instance );
+  field ( readonly, numbering : managed ) Item;
+  field ( readonly ) salesorder, gateitem, Id, Purchaseorder, Material, Materialdesc, Qty, Uom, fconfirm, tgr, gr, maxqty, avlqty, qtyactual; // grossqty, tareqty,
+  field ( readonly ) weighbentrydate, weighbentrytime, weighbexitdate, weighbexittime, postinglog, ssconfirm, sconfirm,pendqty;
+  field ( features : instance ) Qtybought, tareqty,grossqty;
+  action ( features : instance ) CONFIRM result [1] $self;
+  action ( features : instance ) CONFIRMS result [1] $self;
+//  field(mandatory) Qtybought;
+//  field(readonly: update) Qtybought;
+  //  action ( features : instance ) GR result [1] $self ;
+  //   action ( features : instance ) GROSS result [1] $self ;
+  //    action ( features : instance ) NET result [1] $self ;
+  association _Head { with draft; }
+  field ( features : instance ) storagelocation;
+  validation qtychk on save { create; update; field Qtybought; } //
+  determination itemmodify2 on save { create; delete; }
+  determination qtyupdate on modify { field grossqty; field tareqty; field Qtybought; } //
+  side effects { field Qtybought affects field pendqty, field _Head.pendqty; }
+  mapping for zi_gateitem
+    {
+      Purchaseorder   = Purchaseorder;
+      gateitem        = gateitem;
+      material        = material;
+      materialdesc    = materialdesc;
+      uom             = uom;
+      qty             = qty;
+      qtybought       = qtybought;
+      grossqty        = grossqty;
+      tareqty         = tareqty;
+      qtyactual       = qtyactual;
+      tconfirm        = tconfirm;
+      tgr             = tgr;
+      fconfirm        = fconfirm;
+      gr              = gr;
+      storagelocation = storagelocation;
+      weighbentrydate = weighbentrydate;
+      weighbentrytime = weighbentrytime;
+      weighbexitdate  = weighbexitdate;
+      weighbexittime  = weighbexittime;
+      pendqty = pendqty;
+      qtyboughtstatus = qtyboughtstatus;
+    }
+}
+
+define behavior for ZI_PO_DETAILS //alias <alias_name>
+persistent table zdt_po_details
+draft table zdr_po_details
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly, numbering : managed ) item;
+  field ( readonly ) Id, Supplier, Supliername;
+  field ( features : instance ) Salesorder, Purchaseorder, invoiceno, invoicedate , supplyplant,billingreference;
+  determination itemdetails2 on modify { create; field Purchaseorder, Salesorder; }
+  determination podetails on modify { create; }
+  determination sodetails on modify { field Salesorder; }
+  determination itemmodify1 on save { create; update; }
+  validation itemdet on save { create; update; }
+  association _Head;
+  mapping for zi_po_details
+    {
+      Purchaseorder = Purchaseorder;
+      Salesorder    = Salesorder;
+      supplier      = Supplier;
+      supliername   = Supliername;
+      invoiceno     = invoiceno;
+      invoicedate   = invoicedate;
+    }
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition for Gatepass print'
+define service ZSD_GATEPASS_01 {
+  expose ZZVVGATEHEAD;
+  expose ZVGATEITEMPRINT;
+}

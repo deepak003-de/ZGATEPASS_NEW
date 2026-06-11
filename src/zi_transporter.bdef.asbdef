@@ -1,0 +1,33 @@
+managed implementation in class zbp_i_transporter unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZI_TRANSPORTER //alias <alias_name>
+persistent table zdt_transporter
+draft table zdr_transporter
+lock master
+total etag Createdon
+authorization master ( instance )
+
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  draft action ( features : instance ) Edit;
+  draft action Activate;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+  field ( readonly , numbering : managed ) ID ;
+  field ( readonly )  Trasnporterno , createdon ;
+  determination headerdet on save { create; }
+
+  mapping for ZI_TRANSPORTER
+  {
+  trasnporterno    = Trasnporterno ;
+  transportername  = Transportername ;
+  transportergstin = Transportergstin;
+  createdon        = createdon;
+  }
+}

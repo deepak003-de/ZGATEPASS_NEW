@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Gatepass",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Gatepass"
+  },
+  "ui5AppDetails": {
+    "appId": "zgatepass.zgatepass"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_36CCDE49ABD76C6BE09B81B4CC57AD9011917C4B_TM",
+    "semanticObject": "zgatepass",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_36CCDE49ABD76C6BE09B81B4CC57AD9011917C4B_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Gatepass",
+        "subtitle": "Application"
+      }
+    }
+  ]
+}

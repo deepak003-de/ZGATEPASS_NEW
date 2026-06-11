@@ -1,0 +1,180 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: {
+typeName: 'Item',
+typeNamePlural: 'Items',
+title: { type: #STANDARD, value: 'gateitemapi' }
+}}
+
+annotate entity ZC_GATEITEM with
+{
+
+  @UI.facet:
+  [
+
+  {
+  id: 'Generalitem',
+  isSummary: true,
+  label: 'Gatepass Item',
+  type: #COLLECTION,
+  purpose: #STANDARD
+  },
+
+  { type: #FIELDGROUP_REFERENCE,
+  targetQualifier: 'GeneralData1',
+  parentId: 'Generalitem',
+  position: 1,
+  label: 'Section 1',
+  id: 'GeneralData1' } ]
+  @UI.hidden: true
+  Id;
+  @UI.hidden: true
+  item;
+  @UI: { lineItem: [{ position: 10 }],
+  identification: [{ position: 10 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 10, importance: #HIGH }] }
+  Purchaseorder;
+  @UI: { lineItem: [{ position: 10 }],
+  identification: [{ position: 10 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 10, importance: #HIGH }] }
+  billingreference;
+  @UI: { lineItem: [{ position: 20 }],
+  identification: [{ position: 20 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 20, importance: #HIGH }] }
+  gateitem;
+  @UI: { lineItem: [{ position: 10 }],
+  identification: [{ position: 10 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 10, importance: #HIGH }] }
+  salesorder;
+  @UI.hidden: true
+  gatepassno;
+  @UI.hidden: true
+  gateitemapi;
+  @UI: { lineItem: [{ position: 30 }],
+  identification: [{ position: 30 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 30, importance: #HIGH }] }
+  Material;
+  @UI: { lineItem: [{ position: 40 }],
+  identification: [{ position: 40 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 40, importance: #HIGH }] }
+  Materialdesc;
+  @UI: { lineItem: [{ position: 50 }],
+  identification: [{ position: 50 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 50, importance: #HIGH }] }
+  Uom;
+
+  @UI: { lineItem: [{ position: 52 }],
+  identification: [{ position: 52 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 52, importance: #HIGH }] }
+  wuom;
+  @UI: { lineItem: [{ position: 60 }],
+  identification: [{ position: 60 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 60, importance: #HIGH }] }
+  Qty;
+  @UI: { lineItem: [{ position: 61 }],
+  identification: [{ position: 61 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 61, importance: #HIGH }] }
+  //  @UI.hidden: true
+  maxqty;
+  @UI: { lineItem: [{ position: 62 }],
+  identification: [{ position: 62 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 62, importance: #HIGH }] }
+  //  @UI.hidden: true
+  avlqty;
+  @UI: { lineItem: [{ position: 70 }],
+  identification: [{ position: 70 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 70, importance: #HIGH }] }
+  Qtybought;
+  @UI: { lineItem: [{ position: 74 }],
+  identification: [{ position: 74 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 74, importance: #HIGH }] }
+  @Consumption.valueHelpDefinition : [ {
+   entity : { name: 'ZVLGORTF4' , element: 'StorageLocation' },
+  distinctValues: true,
+  useForValidation: true  } ]
+  storagelocation;
+  @UI: { lineItem: [{ position: 100 }],
+  identification: [{ position: 100 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 100, importance: #HIGH }] }
+  Qtyactual;
+  @UI: { lineItem: [{ position: 75 }],
+  identification: [{ position: 75 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 75, importance: #HIGH }] }
+  grossqty;
+  @UI: { lineItem: [{ position: 80 }],
+  identification: [{ position: 80 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 80, importance: #HIGH }] }
+  tareqty;
+
+  @UI: { lineItem: [{ position: 80 }],
+  identification: [{ position: 80 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 150, importance: #HIGH }] }
+  weighbentrydate;
+
+  @UI: { lineItem: [{ position: 80 }],
+  identification: [{ position: 80 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 160, importance: #HIGH }] }
+  weighbentrytime;
+
+  @UI: { lineItem: [{ position: 80 }],
+  identification: [{ position: 80 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 170, importance: #HIGH }] }
+  weighbexitdate;
+
+  @UI: { lineItem: [{ position: 80 }],
+  identification: [{ position: 80 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 180, importance: #HIGH }] }
+  weighbexittime;
+
+  @UI.hidden: true
+  @UI: { lineItem: [{ position: 90 },
+                            { type: #FOR_ACTION, dataAction: 'Confirm', label: 'Confirm ( User Department )', iconUrl: 'sap-icon://close-command-field' , invocationGrouping: #CHANGE_SET }],
+           fieldGroup: [{ qualifier: 'GeneralData1', position: 90, importance: #HIGH }] }
+  tconfirm;
+  @UI.hidden: true
+  //  @UI: { lineItem: [{ position: 95 },
+  //                           { type: #FOR_ACTION, dataAction: 'GR', label: 'GR', iconUrl: 'sap-icon://close-command-field' }],
+  //          fieldGroup: [{ qualifier: 'GeneralData1', position: 95, importance: #HIGH }] }
+  tgr;
+  @UI: { lineItem: [{ position: 200 }],
+  identification: [{ position: 200 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 200, importance: #HIGH }] }
+  //  @UI.hidden: true
+  fconfirm;
+    @UI: { lineItem: [{ position: 210 }],
+  identification: [{ position: 210 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 210, importance: #HIGH }] }  
+  pendqty;
+  @UI: { lineItem: [{ position: 300 }],
+  identification: [{ position: 300 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 300, importance: #HIGH }] }
+  ssconfirm;
+  //  @UI.hidden: true
+  //  @UI: { lineItem: [{ position: 95 },
+  //                           { type: #FOR_ACTION, dataAction: 'GROSS', label: 'Get Gross Weight', iconUrl: 'sap-icon://close-command-field' }],
+  //          fieldGroup: [{ qualifier: 'GeneralData1', position: 95, importance: #HIGH }] }
+  //  bgross;
+  //  @UI.hidden: true
+  //  @UI: { lineItem: [{ position: 95 },
+  //                           { type: #FOR_ACTION, dataAction: 'NET', label: 'Get Tare Weight', iconUrl: 'sap-icon://close-command-field' }],
+  //          fieldGroup: [{ qualifier: 'GeneralData1', position: 95, importance: #HIGH }] }
+  //  bnet;
+  //  @UI: { lineItem: [{ position: 100 }],
+  //  identification: [{ position: 100 }],
+  //  fieldGroup: [{ qualifier: 'GeneralData1', position: 100, importance: #HIGH }] }
+  @UI.hidden: true
+  gr;
+  @UI: { lineItem: [{ position: 190 }],
+  identification: [{ position: 190 }],
+  fieldGroup: [{ qualifier: 'GeneralData1', position: 190, importance: #HIGH }] }
+  postinglog;
+  @UI.hidden: true
+  @UI: { lineItem: [{ position: 100 },
+                             { type: #FOR_ACTION, dataAction: 'Confirms', label: 'Confirm ( Stores )', iconUrl: 'sap-icon://close-command-field' , invocationGrouping: #CHANGE_SET }],
+            fieldGroup: [{ qualifier: 'GeneralData1', position: 100, importance: #HIGH }] }
+  sconfirm;
+
+  /* Associations */
+  //  _Head;
+
+}
